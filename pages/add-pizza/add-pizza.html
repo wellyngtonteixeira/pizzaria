@@ -1,0 +1,49 @@
+<!--
+  Generated template for the AddPizzaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Adicionar Pizza</ion-title>
+    <ion-buttons end>
+      <button (click)="fecharModal()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>Assada</ion-label>
+    <ion-toggle [(ngModel)]="pizza.assada" ></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Delivery</ion-label>
+    <ion-toggle [(ngModel)]="pizza.delivery" ></ion-toggle>
+  </ion-item>
+  <ion-list radio-group [(ngModel)]="pizza.sabor">
+    <ion-list-header>
+      <ion-label>Sabor</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Mista</ion-label>
+      <ion-radio value="Mista"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Calabresa</ion-label>
+      <ion-radio value="Calabresa"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Frango</ion-label>
+      <ion-radio value="Frango"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <ion-label>Quantidade</ion-label>
+    <ion-input [(ngModel)]="pizza.quantidade" type="number"></ion-input>
+  </ion-item>
+  <button ion-button block clear (click)="addPizza(pizza)">Adicionar</button>
+
+</ion-content>
