@@ -27,7 +27,9 @@ export class AddPedidoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public modalCtrl: ModalController, private pedidosService: PedidosService) {
-    this.pedido = new Pedido();
+    this.pedido = {} as Pedido;
+    this.pedido.status = "fila";
+    this.pedido.pizzas = [];
 
   }
 
@@ -40,7 +42,7 @@ export class AddPedidoPage {
     modal1.present();
     modal1.onDidDismiss((data) => {
       if(data){
-        console.log(data.pizzas);
+        console.log(data);
         this.pedido = data;
       }
     });
@@ -67,7 +69,7 @@ export class AddPedidoPage {
   }
 
   enviarPedido(pedido: Pedido){
-    if(pedido.status =="comprado"){
+    if(pedido.status === "comprado"){
       pedido.status = "fila";
       this.pedidosService.editPedido(pedido).then(rf => {
         this.navCtrl.setRoot('HomePage');

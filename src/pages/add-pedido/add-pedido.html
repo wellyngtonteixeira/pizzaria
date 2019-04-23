@@ -82,13 +82,13 @@
         </ion-row>
         <ion-row *ngFor="let pizza of pedido.pizzas">
           <ion-col>
-            {{pizza._quantidade}}
+            {{pizza.quantidade}}
           </ion-col>
           <ion-col>
-            {{pizza._sabor}}
+            {{pizza.sabor}}
           </ion-col>
           <ion-col>
-            <ng-template [ngIf]="pizza._assada" [ngIfElse]="pizzaCrua">
+            <ng-template [ngIf]="pizza.assada" [ngIfElse]="pizzaCrua">
               Sim
             </ng-template>
             <ng-template #pizzaCrua>

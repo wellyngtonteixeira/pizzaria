@@ -5,6 +5,7 @@ import {Pedido} from "../../models/pedido.model";
 import {Observable} from "rxjs";
 import {PedidosService} from "../../services/pedidos/pedidos.service";
 import {map} from "rxjs/operators";
+import {snapshotToArray} from "../../environments/firebase.credentials";
 
 /**
  * Generated class for the BuscaPedidoPage page.
@@ -21,22 +22,24 @@ import {map} from "rxjs/operators";
 export class BuscaPedidoPage implements OnInit{
 
   pedido: Pedido;
-  //pedidosParoquia_db$: Observable<Pedido[]>;
-  //pedidosParoquia$: Pedido[];
+  pedidosParoquia_db$: Observable<any>;
+  pedidosParoquia$: Pedido[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
               private pedidosService: PedidosService) {
-    this.pedido = new Pedido();
+    this.pedido = {} as Pedido;
   }
 
   ngOnInit(){
     this.pedidosParoquia_db$ = this.pedidosService.getPedidosNaParoquia()
-        .valueChanges()
+        .snapshotChanges()
         .pipe(map( changes => {
-          let st = changes.filter(f => f.status === "comprado");
-          return st;
+          let st = changes.filter(f => f.payload.val().status === "comprado");
+          console.log(st)
+          return st.map(rt => {return {key: rt.payload.key,...rt.payload.val()}});
         }))
-    this.pedidosParoquia_db$.forEach(a=> this.pedidosParoquia$ = a);
+    this.pedidosParoquia_db$.forEach(obb => this.pedidosParoquia$ = obb)
+
   }
 
   ionViewDidLoad() {

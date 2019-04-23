@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {AngularFireDatabase} from "@angular/fire/database";
+import * as firebase from "firebase";
 import {Pedido} from "../../models/pedido.model";
 import {FirebaseListObservable} from "@angular/fire/database-deprecated";
 
@@ -7,7 +8,8 @@ import {FirebaseListObservable} from "@angular/fire/database-deprecated";
 @Injectable()
 export class PedidosService{
 
-    private pedidosRef = this.db.list<Pedido>('pedidos');
+    private path_pedidos = "pedidos/";
+    private pedidosRef = firebase.database().ref(this.path_pedidos);
     private pedidosRefHorario = this.db.list<Pedido>('pedidos', q =>
         q.orderByChild("horario")
     );
@@ -26,8 +28,8 @@ export class PedidosService{
         return this.pedidosRef.push(pedido);
     }
 
-    editPedido(pedido: Pedido){
-        return this.pedidosRef.update(pedido.key, pedido);
+    editPedido(pedido){
+        return firebase.database().ref(this.path_pedidos+pedido.key).update(pedido);
     }
 
     getPedidosPorHorario(){
