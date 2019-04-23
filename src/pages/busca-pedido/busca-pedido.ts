@@ -27,7 +27,7 @@ export class BuscaPedidoPage implements OnInit{
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
               private pedidosService: PedidosService) {
-    this.pedido = {} as Pedido;
+    this.pedido = new Pedido();
   }
 
   ngOnInit(){

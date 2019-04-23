@@ -27,9 +27,7 @@ export class AddPedidoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public modalCtrl: ModalController, private pedidosService: PedidosService) {
-    this.pedido = {} as Pedido;
-    this.pedido.status = "fila";
-    this.pedido.pizzas = [];
+    this.pedido = new Pedido();
 
   }
 
