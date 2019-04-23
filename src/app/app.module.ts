@@ -10,6 +10,7 @@ import {AngularFireModule} from "@angular/fire";
 import {FIREBASE_CONFIG} from "../environments/firebase.credentials"
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {PedidosService} from "../services/pedidos/pedidos.service";
+import {IonicSelectableModule} from "ionic-selectable";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {PedidosService} from "../services/pedidos/pedidos.service";
     IonicModule.forRoot(MyApp),
       AngularFireModule.initializeApp(FIREBASE_CONFIG),
       AngularFireDatabaseModule,
+    IonicSelectableModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

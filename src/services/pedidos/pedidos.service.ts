@@ -11,6 +11,8 @@ export class PedidosService{
     private pedidosRefHorario = this.db.list<Pedido>('pedidos', q =>
         q.orderByChild("horario")
     );
+    private pedidosRefParoquia = this.db.list<Pedido>('pedidos', qR =>
+    qR.orderByChild('delivery').equalTo(false));
 
     constructor(private db: AngularFireDatabase) {
 
@@ -24,7 +26,15 @@ export class PedidosService{
         return this.pedidosRef.push(pedido);
     }
 
+    editPedido(pedido: Pedido){
+        return this.pedidosRef.update(pedido.key, pedido);
+    }
+
     getPedidosPorHorario(){
         return this.pedidosRefHorario;
+    }
+
+    getPedidosNaParoquia(){
+        return this.pedidosRefParoquia;
     }
 }

@@ -1,9 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {IonicPage, Modal, ModalController, NavController, NavParams} from 'ionic-angular';
 import {AddPizzaPage} from "../add-pizza/add-pizza";
+import {BuscaPedidoPage} from "../busca-pedido/busca-pedido";
 import {Pedido} from "../../models/pedido.model";
 import {PedidosService} from "../../services/pedidos/pedidos.service";
-import {BrMaskerIonic3} from "brmasker-ionic-3";
 
 
 /**
@@ -28,17 +28,29 @@ export class AddPedidoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public modalCtrl: ModalController, private pedidosService: PedidosService) {
     this.pedido = new Pedido();
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddPedidoPage');
   }
 
+  buscaPedidoModal() {
+    let modal1: Modal = this.modalCtrl.create('BuscaPedidoPage', {});
+    modal1.present();
+    modal1.onDidDismiss((data) => {
+      if(data){
+        console.log(data.pizzas);
+        this.pedido = data;
+      }
+    });
+  }
+
   addPizzaModal() {
     let idPizza: number = this.idPizza;
-    let modal: Modal = this.modalCtrl.create('AddPizzaPage', {idPizza});
-    modal.present();
-    modal.onDidDismiss((data) => {
+    let modal2: Modal = this.modalCtrl.create('AddPizzaPage', {idPizza});
+    modal2.present();
+    modal2.onDidDismiss((data) => {
       if(data){
         console.log(data);
         this.pedido.pizzas.push(data);
@@ -55,9 +67,17 @@ export class AddPedidoPage {
   }
 
   enviarPedido(pedido: Pedido){
-    this.pedidosService.addPedido(pedido).then(ref => {
-      this.navCtrl.setRoot('HomePage', {key: ref.key});
-    });
+    if(pedido.status =="comprado"){
+      pedido.status = "fila";
+      this.pedidosService.editPedido(pedido).then(rf => {
+        this.navCtrl.setRoot('HomePage');
+      });
+    }else{
+      this.pedidosService.addPedido(pedido).then(ref => {
+        this.navCtrl.setRoot('HomePage', {key: ref.key});
+      });
+    }
+
   }
 
 }

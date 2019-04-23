@@ -13,7 +13,7 @@ import {Pedido} from "../../models/pedido.model";
 })
 export class HomePage implements OnInit{
 
-  pedidos_db$: Observable<any>;
+  pedidos_db$: Observable<Pedido[]>;
 
   constructor(public navCtrl: NavController, private pedidosService: PedidosService) {
 
@@ -27,5 +27,9 @@ export class HomePage implements OnInit{
               return st;
           }))
    }
+
+    toArray(answers: object) {
+        return Object.keys(answers).map(key => answers[key])
+    }
 
 }

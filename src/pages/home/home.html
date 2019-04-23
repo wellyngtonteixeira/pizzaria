@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Início</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!--LISTA DE PEDIDOS-->
+  <ion-list>
+    <ion-list-header>
+      FILA DE ATENDIMENTO
+    </ion-list-header>
+    <!--<ion-item *ngFor="let p of pedidos_db$ | async">
+      {{p.cliente}}
+    </ion-item>-->
+    <!--primeiros a entrarem na fila são os pedidos vendidos antecipadamente
+    e que são DELIVERY
+    DEPOIS entram os pedidos que chegam para buscar na paróquia-->
+    <ion-card *ngFor="let pedido of pedidos_db$ | async">
+      <ion-card-header>
+        {{pedido.cliente}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              Quantidade
+            </ion-col>
+            <ion-col>
+              Sabor
+            </ion-col>
+            <ion-col>
+              Assada
+            </ion-col>
+            <ion-col>
+
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let pizza of pedido.pizzas">
+            <ion-col>
+              {{pizza._quantidade}}
+            </ion-col>
+            <ion-col>
+              {{pizza._sabor}}
+            </ion-col>
+            <ion-col>
+              <ng-template [ngIf]="pizza._assada" [ngIfElse]="pizzaCrua">
+                Sim
+              </ng-template>
+              <ng-template #pizzaCrua>
+                Não
+              </ng-template>
+            </ion-col>
+            <ion-col>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <!--BOTÃO PARA ADICIONAR PEDIDO-->
+  <ion-fab bottom right>
+    <button ion-fab color="primary" navPush="AddPedidoPage">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

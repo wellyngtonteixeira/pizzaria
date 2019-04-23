@@ -3,6 +3,7 @@ import {Pizza} from "./pizza.model";
 
 export class Pedido {
     key?: string
+    delivery: boolean = false;
     cliente:string = "";
     endereco: string = "";
     telefone: string = "";

@@ -1,0 +1,23 @@
+<!--
+  Generated template for the BuscaPedidoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Busca Pedido</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-label>Cliente</ion-label>
+  <ion-searchbar (ionInput)="pedidoChange($event)">
+
+  </ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let pd of pedidosParoquia$" (click)="selecionaCliente(pd)">
+      {{pd.cliente}}
+    </ion-item>
+  </ion-list>
+</ion-content>
