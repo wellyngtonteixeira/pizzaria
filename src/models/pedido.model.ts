@@ -7,8 +7,8 @@ export class Pedido {
     cliente:string = ""
     endereco: string = ""
     telefone: string = ""
-    dt: DateTime
-    horario: DateTime
+    dt: string = ""
+    horario: string = ""
     vendedor: string = ""
     pizzas: Pizza[] = []
     status: string = "fila"

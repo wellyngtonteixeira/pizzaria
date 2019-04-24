@@ -16,7 +16,7 @@
     <ion-card-header>
       <ion-card-title>Dados Cliente</ion-card-title>
       <ion-buttons end>
-        <button (click)="buscaPedidoModal()">
+        <button (click)="buscaPedidoModal()" >
           <ion-icon name="search"></ion-icon>
         </button>
       </ion-buttons>
@@ -28,7 +28,7 @@
   </ion-item>
       <ion-item>
         <ion-label>Delivery</ion-label>
-        <ion-toggle [(ngModel)]="pedido.delivery"></ion-toggle>
+        <ion-toggle [(ngModel)]="pedido.delivery" ></ion-toggle>
       </ion-item>
   <ion-item *ngIf="pedido.delivery">
     <ion-label>Endereço</ion-label>
@@ -36,19 +36,21 @@
   </ion-item>
   <ion-item>
     <ion-label>Telefone</ion-label>
-    <ion-input [(ngModel)]="pedido.telefone" type="tel" maxlength="9" ></ion-input>
+    <ion-input [(ngModel)]="pedido.telefone" type="tel" maxlength="9" [disabled]="true"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Data</ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="pedido.dt" min="2019-05-03" max="2019-05-04"></ion-datetime>
+    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="pedido.dt" min="2019-05-03" max="2019-05-04"
+    [disabled]="true"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Horário</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="pedido.horario" min="19:30" max="23:00"></ion-datetime>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="pedido.horario" min="19:30" max="23:00"
+                  [disabled]="true"></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Vendedor</ion-label>
-    <ion-input [(ngModel)]="pedido.vendedor"></ion-input>
+    <ion-input [(ngModel)]="pedido.vendedor" [disabled]="true"></ion-input>
   </ion-item>
     </ion-card-content>
   </ion-card>
@@ -102,6 +104,7 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
+  {{pedido | json}}
   <button ion-button block (click)="enviarPedido(pedido)">Enviar pedido</button>
 
 

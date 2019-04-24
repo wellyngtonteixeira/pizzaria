@@ -65,7 +65,7 @@
   </ion-list>
   <!--BOTÃO PARA ADICIONAR PEDIDO-->
   <ion-fab bottom right>
-    <button ion-fab color="primary" navPush="AddPedidoPage">
+    <button ion-fab color="primary" navPush="AddPedidoPage" [navParams]="{dt_valida: str_dt_valida}">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

@@ -24,6 +24,7 @@ export class BuscaPedidoPage implements OnInit{
   pedido: Pedido;
   pedidosParoquia_db$: Observable<any>;
   pedidosParoquia$: Pedido[];
+  dt_pedido_b: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
               private pedidosService: PedidosService) {
@@ -31,19 +32,22 @@ export class BuscaPedidoPage implements OnInit{
   }
 
   ngOnInit(){
+
     this.pedidosParoquia_db$ = this.pedidosService.getPedidosNaParoquia()
         .snapshotChanges()
         .pipe(map( changes => {
           let st = changes.filter(f => f.payload.val().status === "comprado");
-          console.log(st)
-          return st.map(rt => {return {key: rt.payload.key,...rt.payload.val()}});
+          let st2 = st.filter(f2 => f2.payload.val().dt === this.dt_pedido_b)
+          console.log(st2)
+          return st2.map(rt => {return {key: rt.payload.key,...rt.payload.val()}});
         }))
     this.pedidosParoquia_db$.forEach(obb => this.pedidosParoquia$ = obb)
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BuscaPedidoPage');
+  ionViewWillLoad() {
+    this.dt_pedido_b = this.navParams.get("dt_valida_b");
+    console.log(this.dt_pedido_b)
   }
 
   fecharModal(){
