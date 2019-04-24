@@ -40,6 +40,7 @@ export class AddPedidoPage {
     this.pedido.dt = this.dt_pedido;
     this.pedido.telefone = "1111111111";
     this.pedido.horario = new Date().toLocaleTimeString();
+    this.pedido.vendedor = "Caixa";
   }
 
   transformeDataString(cp: string): string{

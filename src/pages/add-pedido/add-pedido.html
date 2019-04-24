@@ -52,6 +52,10 @@
     <ion-label>Vendedor</ion-label>
     <ion-input [(ngModel)]="pedido.vendedor" [disabled]="true"></ion-input>
   </ion-item>
+      <ion-item>
+        <ion-label>Pagou</ion-label>
+        <ion-toggle [(ngModel)]="pedido.pago" ></ion-toggle>
+      </ion-item>
     </ion-card-content>
   </ion-card>
   <!--SUBAREA DA PIZZA-->

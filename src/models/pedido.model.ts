@@ -1,4 +1,3 @@
-import {DateTime} from "ionic-angular";
 import {Pizza} from "./pizza.model";
 
 export class Pedido {
@@ -12,6 +11,7 @@ export class Pedido {
     vendedor: string = ""
     pizzas: Pizza[] = []
     status: string = "fila"
+    pago: boolean = true
 
     constructor(){
 

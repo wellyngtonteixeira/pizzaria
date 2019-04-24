@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
-import {IonicSelectableComponent} from "ionic-selectable";
 import {Pedido} from "../../models/pedido.model";
 import {Observable} from "rxjs";
 import {PedidosService} from "../../services/pedidos/pedidos.service";
 import {map} from "rxjs/operators";
-import {snapshotToArray} from "../../environments/firebase.credentials";
 
 /**
  * Generated class for the BuscaPedidoPage page.

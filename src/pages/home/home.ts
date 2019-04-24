@@ -4,8 +4,6 @@ import {PedidosService} from "../../services/pedidos/pedidos.service";
 import {Observable} from "rxjs";
 import {map} from 'rxjs/operators'
 import {Pedido} from "../../models/pedido.model";
-import {DateTime} from "ionic-angular/umd";
-import {DateTimeData} from "ionic-angular/util/datetime-util";
 
 
 @IonicPage()

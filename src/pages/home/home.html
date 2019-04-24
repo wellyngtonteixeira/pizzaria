@@ -20,7 +20,7 @@
     <!--primeiros a entrarem na fila são os pedidos vendidos antecipadamente
     e que são DELIVERY
     DEPOIS entram os pedidos que chegam para buscar na paróquia-->
-    <ion-card *ngFor="let pedido of pedidos_db$ | async">
+    <ion-card *ngFor="let pedido of pedidos_db$ | async " >
       <ion-card-header>
         {{pedido.cliente}} - {{pedido.horario}}
         <ion-buttons end>
