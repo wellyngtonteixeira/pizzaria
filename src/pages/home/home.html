@@ -22,7 +22,15 @@
     DEPOIS entram os pedidos que chegam para buscar na paróquia-->
     <ion-card *ngFor="let pedido of pedidos_db$ | async">
       <ion-card-header>
-        {{pedido.cliente}}
+        {{pedido.cliente}} - {{pedido.horario}}
+        <ion-buttons end>
+          <button (click)="entregaPedido(pedido)">
+            <ion-icon name="checkmark-circle"></ion-icon>
+          </button>
+          <button (click)="cancelaPedido(pedido)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-buttons>
       </ion-card-header>
       <ion-card-content>
         <ion-grid>
@@ -36,8 +44,8 @@
             <ion-col>
               Assada
             </ion-col>
-            <ion-col>
-
+            <ion-col *ngIf="pedido.delivery">
+              Delivery
             </ion-col>
           </ion-row>
           <ion-row *ngFor="let pizza of pedido.pizzas">
@@ -55,8 +63,8 @@
                 Não
               </ng-template>
             </ion-col>
-            <ion-col>
-
+            <ion-col *ngIf="pedido.delivery">
+                {{pedido.endereco}}
             </ion-col>
           </ion-row>
         </ion-grid>

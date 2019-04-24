@@ -29,12 +29,12 @@ export class HomePage implements OnInit{
       this.formataData()
       //console.log(this.str_dt_valida);
       this.pedidos_db$ = this.pedidosService.getPedidosPorHorario()
-          .valueChanges()
+          .snapshotChanges()
           .pipe(map( changes => {
-              let st1 = changes.filter(f => f.status === "fila"
+              let st1 = changes.filter(f => f.payload.val().status === "fila"
               );
-              let st2 = st1.filter(f2 => f2.dt === this.str_dt_valida);
-              return st2;
+              let st2 = st1.filter(f2 => f2.payload.val().dt === this.str_dt_valida);
+              return st2.map(rt => {return {key: rt.payload.key,...rt.payload.val()}});
           }))
 
    }
@@ -72,28 +72,22 @@ export class HomePage implements OnInit{
 
    }
 
-   transformeDataString(cp: DateTimeData): string{
-
-       let ano = cp.year.toString()
-       let mes = cp.month
-       let mes_s = mes.toString();
-       if(mes < 10){
-           mes_s = "0"+mes_s
-       }
-
-       let dia = cp.day
-       let dia_s = dia.toString()
-       if(dia < 10){
-           dia_s = "0"+dia_s
-       }
-
-       let str = ano+"-"+mes_s+"-"+dia_s;
-
-       return str;
-   }
-
     toArray(answers: object) {
         return Object.keys(answers).map(key => answers[key])
+    }
+
+    entregaPedido(pedido: Pedido){
+      pedido.status = "entregue";
+      this.pedidosService.editPedido(pedido).then(rf => {
+          this.navCtrl.setRoot('HomePage');
+      });
+    }
+
+    cancelaPedido(pedido: Pedido){
+        pedido.status = "cancelado";
+        this.pedidosService.editPedido(pedido).then(rf => {
+            this.navCtrl.setRoot('HomePage');
+        });
     }
 
 }

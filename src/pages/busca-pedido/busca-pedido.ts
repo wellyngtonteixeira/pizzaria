@@ -37,8 +37,7 @@ export class BuscaPedidoPage implements OnInit{
         .snapshotChanges()
         .pipe(map( changes => {
           let st = changes.filter(f => f.payload.val().status === "comprado");
-          let st2 = st.filter(f2 => f2.payload.val().dt === this.dt_pedido_b)
-          console.log(st2)
+          let st2 = st.filter(f2 => f2.payload.val().dt === this.dt_pedido_b);
           return st2.map(rt => {return {key: rt.payload.key,...rt.payload.val()}});
         }))
     this.pedidosParoquia_db$.forEach(obb => this.pedidosParoquia$ = obb)
