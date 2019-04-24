@@ -22,7 +22,7 @@ import {snapshotToArray} from "../../environments/firebase.credentials";
 export class BuscaPedidoPage implements OnInit{
 
   pedido: Pedido;
-  pedidosParoquia_db$: Observable<any>;
+  pedidosParoquia_db$: Observable<any[]>;
   pedidosParoquia$: Pedido[];
   dt_pedido_b: string;
 
@@ -55,7 +55,6 @@ export class BuscaPedidoPage implements OnInit{
   }
 
   pedidoChange(event: any) {
-      this.ngOnInit();
 
       const val = event.target.value;
 
@@ -63,6 +62,8 @@ export class BuscaPedidoPage implements OnInit{
       this.pedidosParoquia$ = this.pedidosParoquia$.filter((item) => {
         return (item.cliente.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+    } else {
+      this.ngOnInit()
     }
   }
 

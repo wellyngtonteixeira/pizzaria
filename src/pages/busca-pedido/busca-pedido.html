@@ -12,7 +12,7 @@
 
 <ion-content padding>
   <ion-label>Cliente</ion-label>
-  <ion-searchbar (ionInput)="pedidoChange($event)">
+  <ion-searchbar (ionInput)="pedidoChange($event)" [ngModel]="searchQuery" placeholder="Pesquise por Cliente...">
 
   </ion-searchbar>
   <ion-list>
