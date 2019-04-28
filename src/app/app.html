@@ -7,9 +7,13 @@
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+        <ion-item-divider>Pedidos</ion-item-divider>
+      <ion-item-group>
+        <button menuClose ion-item  *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+      </ion-item-group>
+
     </ion-list>
   </ion-content>
 

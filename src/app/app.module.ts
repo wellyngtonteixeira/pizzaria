@@ -11,6 +11,8 @@ import {FIREBASE_CONFIG} from "../environments/firebase.credentials"
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {PedidosService} from "../services/pedidos/pedidos.service";
 import {IonicSelectableModule} from "ionic-selectable";
+import {PedidosAntecipadosPage} from "../pages/pedidos-antecipados/pedidos-antecipados";
+import {PedidosAntecipadosPageModule} from "../pages/pedidos-antecipados/pedidos-antecipados.module";
 
 
 @NgModule({
@@ -23,10 +25,12 @@ import {IonicSelectableModule} from "ionic-selectable";
       AngularFireModule.initializeApp(FIREBASE_CONFIG),
       AngularFireDatabaseModule,
     IonicSelectableModule,
+    PedidosAntecipadosPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    PedidosAntecipadosPage
   ],
   providers: [
     StatusBar,
