@@ -13,6 +13,8 @@ import {PedidosService} from "../services/pedidos/pedidos.service";
 import {IonicSelectableModule} from "ionic-selectable";
 import {PedidosAntecipadosPage} from "../pages/pedidos-antecipados/pedidos-antecipados";
 import {PedidosAntecipadosPageModule} from "../pages/pedidos-antecipados/pedidos-antecipados.module";
+import {AuthService} from "../services/auth/auth.service";
+import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import {PedidosAntecipadosPageModule} from "../pages/pedidos-antecipados/pedidos
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-      PedidosService
+      PedidosService,
+      AuthService,
+      AngularFireAuth
   ]
 })
 export class AppModule {}
