@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule} from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
@@ -14,7 +14,8 @@ import {IonicSelectableModule} from "ionic-selectable";
 import {PedidosAntecipadosPage} from "../pages/pedidos-antecipados/pedidos-antecipados";
 import {PedidosAntecipadosPageModule} from "../pages/pedidos-antecipados/pedidos-antecipados.module";
 import {AuthService} from "../services/auth/auth.service";
-import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
+import {AngularFireAuth} from "@angular/fire/auth";
+import {ComponentsModule} from "../components/components.module";
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {AngularFireAuth, AngularFireAuthModule} from "@angular/fire/auth";
       AngularFireModule.initializeApp(FIREBASE_CONFIG),
       AngularFireDatabaseModule,
     IonicSelectableModule,
-    PedidosAntecipadosPageModule
+    PedidosAntecipadosPageModule, ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

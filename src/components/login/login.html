@@ -1,0 +1,29 @@
+<!-- Generated template for the LoginComponent component -->
+<div *ngIf="(authService.user)|| {} as user">
+  <div *ngIf="!user.email">
+  <br>
+  <ion-item>
+    <ion-label floating>
+      <ion-icon name='person'>
+      </ion-icon> Usuário</ion-label>
+    <ion-input type="text" #usuario></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>
+      <ion-icon name='lock'>
+      </ion-icon> Senha </ion-label>
+    <ion-input type="password" #senha></ion-input>
+  </ion-item>
+  <br>
+  <button ion-button block clear
+          (click)="loginComEmail()">Entrar</button>
+</div>
+<div *ngIf="user.email">
+
+  Você logou como {{user.email}}
+  <button ion-button block danger
+          (click)="logout()">Sair</button>
+
+</div>
+</div>
