@@ -1,5 +1,5 @@
 <!-- Generated template for the LoginComponent component -->
-<div *ngIf="(authService.user)|| {} as user">
+<div *ngIf="(authService.usuario.getValue())|| {} as user">
   <div *ngIf="!user.email">
   <br>
   <ion-item>

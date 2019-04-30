@@ -23,7 +23,7 @@
     <ion-card *ngFor="let pedido of pedidos_db$ | async " >
       <ion-card-header>
         {{pedido.cliente}} - {{pedido.horario}}
-        <ion-buttons end>
+        <ion-buttons end *ngIf="pedidosService.getEdit()">
           <button (click)="entregaPedido(pedido)">
             <ion-icon name="checkmark-circle"></ion-icon>
           </button>
@@ -72,7 +72,7 @@
     </ion-card>
   </ion-list>
   <!--BOTÃO PARA ADICIONAR PEDIDO-->
-  <ion-fab bottom right>
+  <ion-fab bottom right *ngIf="pedidosService.getAdd()">
     <button ion-fab color="primary" navPush="AddPedidoPage" [navParams]="{dt_valida: str_dt_valida}">
       <ion-icon name="add"></ion-icon>
     </button>

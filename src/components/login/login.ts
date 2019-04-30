@@ -14,8 +14,8 @@ import {AuthService} from "../../services/auth/auth.service";
 })
 export class LoginComponent {
 
-  user: firebase.User
-  @ViewChild('usuario') usuario;
+  //usuario: firebase.User
+  @ViewChild('usuario') email;
   @ViewChild('senha') senha;
 
   constructor(private app: App,private authService: AuthService, private menuCtrl: MenuController) {
@@ -23,9 +23,9 @@ export class LoginComponent {
   }
 
   loginComEmail(){
-    this.authService.login(this.usuario.value, this.senha.value)
+    this.authService.login(this.email.value, this.senha.value)
         .then(suc =>{
-          this.user = suc.user
+          //this.usuario = suc.user
           this.app.getActiveNav().setRoot('HomePage')
         })
   }
@@ -33,7 +33,6 @@ export class LoginComponent {
   logout(){
       this.menuCtrl.close()
       this.authService.signOut()
-      this.user = null
       this.app.getActiveNav().setRoot('LoginPage')
   }
 
