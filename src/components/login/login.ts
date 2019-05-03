@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {App, MenuController} from "ionic-angular";
 import {AuthService} from "../../services/auth/auth.service";
+import {BehaviorSubject} from "rxjs";
 
 /**
  * Generated class for the LoginComponent component.
@@ -32,8 +33,11 @@ export class LoginComponent {
 
   logout(){
       this.menuCtrl.close()
-      this.authService.signOut()
-      this.app.getActiveNav().setRoot('LoginPage')
+      this.authService.signOut().then(suc=>{
+          this.authService.usuario = new BehaviorSubject(null);
+          this.app.getActiveNav().setRoot('LoginPage')
+      })
+
   }
 
 }

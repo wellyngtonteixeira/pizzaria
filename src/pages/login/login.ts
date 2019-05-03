@@ -34,6 +34,13 @@ export class LoginPage {
         })
   }
 
+  ionViewWillLoad(){
+    console.log('ionViewWillLoad LoginPage');
+    if(this.authService.usuario.value != null){
+      this.navCtrl.setRoot('HomePage')
+    }
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }

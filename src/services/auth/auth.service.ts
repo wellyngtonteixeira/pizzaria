@@ -38,10 +38,8 @@ export class AuthService {
         return this.afAuth.auth.signInWithEmailAndPassword(email, senha);
     }
 
-    signOut() {
-        this.afAuth.auth.signOut().then(suc=> {
-            this.usuario = new BehaviorSubject(null)
-        })
+    signOut(): Promise<void> {
+        return this.afAuth.auth.signOut()
     }
 
 }
