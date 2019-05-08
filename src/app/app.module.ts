@@ -16,6 +16,8 @@ import {PedidosAntecipadosPageModule} from "../pages/pedidos-antecipados/pedidos
 import {AuthService} from "../services/auth/auth.service";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {ComponentsModule} from "../components/components.module";
+import {TodosPedidosPageModule} from "../pages/todos-pedidos/todos-pedidos.module";
+import {TodosPedidosPage} from "../pages/todos-pedidos/todos-pedidos";
 
 
 @NgModule({
@@ -28,12 +30,15 @@ import {ComponentsModule} from "../components/components.module";
       AngularFireModule.initializeApp(FIREBASE_CONFIG),
       AngularFireDatabaseModule,
     IonicSelectableModule,
-    PedidosAntecipadosPageModule, ComponentsModule
+    PedidosAntecipadosPageModule,
+    TodosPedidosPageModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    PedidosAntecipadosPage
+    PedidosAntecipadosPage,
+      TodosPedidosPage,
   ],
   providers: [
     StatusBar,

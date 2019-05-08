@@ -36,17 +36,17 @@
   </ion-item>
   <ion-item>
     <ion-label>Telefone</ion-label>
-    <ion-input [(ngModel)]="pedido.telefone" type="tel" maxlength="9" [disabled]="true"></ion-input>
+    <ion-input [(ngModel)]="pedido.telefone" type="tel" maxlength="9" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Data</ion-label>
     <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="pedido.dt" min="2019-05-03" max="2019-05-04"
-    [disabled]="true"></ion-datetime>
+    ></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Horário</ion-label>
-    <ion-datetime displayFormat="HH:mm" [(ngModel)]="pedido.horario" min="19:30" max="23:00"
-                  [disabled]="true"></ion-datetime>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="pedido.horario" min="18:30" max="23:00"
+                  ></ion-datetime>
   </ion-item>
   <ion-item>
     <ion-label>Vendedor</ion-label>

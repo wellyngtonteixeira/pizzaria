@@ -1,15 +1,123 @@
 <!--
-  Generated template for the EditPedidoPage page.
+  Generated template for the AddPedidoPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>EditPedido</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Editar pedido</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Dados Cliente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Cliente</ion-label>
+        <ion-input [(ngModel)]="pedido.cliente"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Delivery</ion-label>
+        <ion-toggle [(ngModel)]="pedido.delivery" ></ion-toggle>
+      </ion-item>
+      <ion-item *ngIf="pedido.delivery">
+        <ion-label>Endereço</ion-label>
+        <ion-input [(ngModel)]="pedido.endereco"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Telefone</ion-label>
+        <ion-input [(ngModel)]="pedido.telefone" type="tel" maxlength="9" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Data</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="pedido.dt" min="2019-05-03" max="2019-05-04"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Horário</ion-label>
+        <ion-datetime displayFormat="HH:mm" [(ngModel)]="pedido.horario" min="18:30" max="23:00"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Obs:</ion-label>
+        <ion-input [(ngModel)]="pedido.obs" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Vendedor</ion-label>
+        <ion-input [(ngModel)]="pedido.vendedor" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pagou</ion-label>
+        <ion-toggle [(ngModel)]="pedido.pago" ></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>Status</ion-label>
+        <ion-select placeholder="Selecione um" [(ngModel)]="pedido.status">
+          <ion-option value="entregue">Entregue</ion-option>
+          <ion-option value="comprado">Comprado</ion-option>
+          <ion-option value="cancelado">Cancelado</ion-option>
+          <ion-option value="fila">Fila</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <!--SUBAREA DA PIZZA-->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Pedido</ion-card-title>
+      <ion-buttons end>
+        <button (click)="addPizzaModal()">
+          ADD
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            Quantidade
+          </ion-col>
+          <ion-col>
+            Sabor
+          </ion-col>
+          <ion-col>
+            Assada
+          </ion-col>
+          <ion-col>
+
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let pizza of pedido.pizzas">
+          <ion-col>
+            {{pizza.quantidade}}
+          </ion-col>
+          <ion-col>
+            {{pizza.sabor}}
+          </ion-col>
+          <ion-col>
+            <ng-template [ngIf]="pizza.assada" [ngIfElse]="pizzaCrua">
+              Sim
+            </ng-template>
+            <ng-template #pizzaCrua>
+              Não
+            </ng-template>
+          </ion-col>
+          <ion-col>
+            <button ion-button small clear (click)="rmPizza(pizza)"><ion-icon name="trash"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button block (click)="savePedido(pedido)">Enviar pedido</button>
+
+
 
 </ion-content>

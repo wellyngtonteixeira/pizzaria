@@ -36,7 +36,7 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              Quantidade
+              Qtd.
             </ion-col>
             <ion-col>
               Sabor
@@ -64,8 +64,11 @@
               </ng-template>
             </ion-col>
             <ion-col *ngIf="pedido.delivery">
-                {{pedido.endereco}}
+                {{pedido.endereco}} - Telefone: {{pedido.telefone}}
             </ion-col>
+          </ion-row>
+          <ion-row *ngIf="pedido.obs">
+            <ion-col>OBS: {{pedido.obs}}</ion-col>
           </ion-row>
         </ion-grid>
       </ion-card-content>

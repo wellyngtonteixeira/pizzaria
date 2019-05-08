@@ -85,7 +85,7 @@ export class PedidosAntecipadosPage implements OnInit{
       ]);
 
       var options = {
-          title: 'Pizzas'
+          title: 'Pizzas para fazer'
       };
 
       var chart = new google.visualization.PieChart(document.getElementById('chart_div'));

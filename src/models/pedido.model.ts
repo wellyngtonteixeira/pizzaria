@@ -11,6 +11,7 @@ export class Pedido {
     vendedor: string = ""
     pizzas: Pizza[] = []
     status: string = "fila"
+    obs: string
     pago: boolean = true
 
     constructor(){

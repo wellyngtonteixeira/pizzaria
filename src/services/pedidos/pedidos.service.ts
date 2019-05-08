@@ -11,6 +11,7 @@ export class PedidosService{
 
     private path_pedidos = "pedidos/";
     private pedidosRef = firebase.database().ref(this.path_pedidos);
+    private pedidosRefTodos = this.db.list<Pedido>('pedidos')
     private pedidosRefHorario = this.db.list<Pedido>('pedidos', q =>
         q.orderByChild("horario"))
    ;
@@ -43,7 +44,7 @@ export class PedidosService{
     }
 
     getPedidos(){
-        return this.pedidosRef;
+        return this.pedidosRefTodos;
     }
 
     addPedido(pedido: Pedido){

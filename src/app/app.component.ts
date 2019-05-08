@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {HomePage} from "../pages/home/home";
 import {PedidosAntecipadosPage} from "../pages/pedidos-antecipados/pedidos-antecipados";
 import {AuthService} from "../services/auth/auth.service";
+import {TodosPedidosPage} from "../pages/todos-pedidos/todos-pedidos";
 
 
 
@@ -25,7 +26,8 @@ export class MyApp {
     // // used for an example of ngFor and navigation
      this.pages = [
        { title: 'Home - Fila', component: HomePage },
-       { title: 'Pedidos Antencipados', component: PedidosAntecipadosPage }
+       { title: 'Pedidos Antencipados', component: PedidosAntecipadosPage },
+       { title: 'Todos os Pedidos', component: TodosPedidosPage }
      ];
 
   }
